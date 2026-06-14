@@ -887,8 +887,8 @@ const CENTROIDS = {"Iceland": [123.9, 146.4], "United Kingdom": [268.1, 342.4], 
 const NAMES = ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia and Herzegovina", "Bulgaria", "Croatia", "Czechia", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Moldova", "Monaco", "Montenegro", "Netherlands", "North Macedonia", "Norway", "Poland", "Portugal", "Romania", "San Marino", "Serbia", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Türkiye", "Ukraine", "United Kingdom", "Vatican City"];
 const TINY = {"Malta": {"cx": 437.2, "cy": 586.0}, "Monaco": {"cx": 360.7, "cy": 497.6}, "Liechtenstein": {"cx": 386.7, "cy": 448.7}, "San Marino": {"cx": 411.0, "cy": 491.2}, "Vatican City": {"cx": 410.3, "cy": 512.9}};
 const LABELS = {"Iceland": "アイスランド", "United Kingdom": "イギリス", "Ireland": "アイルランド", "Portugal": "ポルトガル", "Spain": "スペイン", "France": "フランス", "Switzerland": "スイス", "Germany": "ドイツ", "Poland": "ポーランド", "Czechia": "チェコ", "Slovakia": "スロバキア", "Hungary": "ハンガリー", "Austria": "オーストリア", "Norway": "ノルウェー", "Sweden": "スウェーデン", "Finland": "フィンランド", "Denmark": "デンマーク", "Estonia": "エストニア", "Latvia": "ラトビア", "Lithuania": "リトアニア", "Belarus": "ベラルーシ", "Ukraine": "ウクライナ", "Romania": "ルーマニア", "Moldova": "モルドバ", "Bulgaria": "ブルガリア", "Croatia": "クロアチア", "Bosnia and Herzegovina": "ボスニア・ヘルツェゴビナ", "Serbia": "セルビア", "Montenegro": "モンテネグロ", "Albania": "アルバニア", "North Macedonia": "北マケドニア", "Greece": "ギリシャ", "Türkiye": "トルコ", "Luxembourg": "ルクセンブルク", "Belgium": "ベルギー", "Netherlands": "オランダ", "Andorra": "アンドラ", "Italy": "イタリア", "Slovenia": "スロベニア", "Malta": "マルタ", "Monaco": "モナコ", "Liechtenstein": "リヒテンシュタイン", "San Marino": "サンマリノ", "Vatican City": "バチカン市国"};
-const UI = {"title": "ヨーロッパ", "map_aria": "ヨーロッパの地図", "placed": "配置済み", "mistakes": "ミス", "hide": "国名を隠す", "show": "国名を表示", "restart": "最初から", "listhead": "国名をドラッグして正しい場所に置いてください", "howto_h": "あそびかた", "howto_p": "リストの国名をドラッグして、地図の正しい場所にドロップしよう！", "correct": "正解！", "wrong": "ちがう場所だよ", "complete": "クリア！", "perfect": "パーフェクト！", "ribbon": "ノーミス達成", "c_countries": "国の数", "c_mistakes": "ミス", "c_time": "タイム", "msg_normal": "おみごと！ {n}か国すべて配置、ミスは{m}回でした。<br>ノーミスを目指してもう一度挑戦！", "msg_perfect": "完璧！ {n}か国すべてをミスなしで配置しました。<br>あなたは地図マスターです！ 🌍✨", "playagain": "もう一度", "credit": "44か国 · 国名ドラッグ＆ドロップ地理クイズ", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">日本語版</a><span class=\"sep\">›</span><span>ヨーロッパ</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ 地域選択へ</a> <a href=\"../en/europe.html\">🇬🇧 English</a>"};
-const VERSION = "v1.5";
+const UI = {"title": "ヨーロッパ", "map_aria": "ヨーロッパの地図", "placed": "配置済み", "mistakes": "ミス", "hide": "国名を隠す", "show": "国名を表示", "restart": "最初から", "listhead": "国名をドラッグして正しい場所に置いてください", "howto_h": "あそびかた", "howto_p": "リストの国名をドラッグして、地図の正しい場所にドロップしよう！", "correct": "正解！", "wrong": "ちがう場所だよ", "complete": "クリア！", "perfect": "パーフェクト！", "ribbon": "ノーミス達成", "mapname": "ヨーロッパ", "c_countries": "国の数", "c_mistakes": "ミス", "c_time": "タイム", "msg_normal": "おみごと！ {n}か国すべて配置、ミスは{m}回でした。<br>ノーミスを目指してもう一度挑戦！", "msg_perfect": "完璧！ {n}か国すべてをミスなしで配置しました。<br>あなたは{map}マスターです！ 🌍✨", "playagain": "もう一度", "credit": "44か国 · 国名ドラッグ＆ドロップ地理クイズ", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">日本語版</a><span class=\"sep\">›</span><span>ヨーロッパ</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ 地域選択へ</a> <a href=\"../en/europe.html\">🇬🇧 English</a>"};
+const VERSION = "v1.7";
 
 const map=document.getElementById('map');
 const landG=document.getElementById('land');
@@ -1026,7 +1026,7 @@ function triggerWin(){
     ribbon.style.display='';
     document.getElementById('winEmoji').textContent='🏆';
     document.getElementById('winTitle').textContent=UI.perfect;
-    winmsg.innerHTML=UI.msg_perfect.replace('{n}','<b>'+TOTAL+'</b>');
+    winmsg.innerHTML=UI.msg_perfect.replace('{n}','<b>'+TOTAL+'</b>').replace('{map}','<b>'+(UI.mapname||UI.title)+'</b>');
     startConfetti(true);
   }else{
     card.classList.remove('perfect');
@@ -1174,71 +1174,6 @@ function loopConfetti(){
     confRAF=null;confEl.classList.remove('show');
   }
 }
-
-/* ---------- HIDDEN DEV COMMANDS (preview win events) ----------
-   Keyboard:
-     Shift + W  → preview NORMAL clear (with sample mistakes)
-     Shift + P  → preview PERFECT clear (zero mistakes)
-     Type  "win"     → normal clear
-     Type  "perfect" → perfect clear
-   Mobile / no keyboard:
-     Tap the 🌍 globe badge 5 times quickly → opens a tiny menu
-*/
-function previewWin(perfect){
-  // place every country visually (so the map looks complete behind the card)
-  NAMES.forEach(n=>{
-    const path=map.querySelector(`.country[data-name="${cssEsc(n)}"]`);
-    if(path)path.classList.add('ok');
-    if(TINY[n]){const r=tinyLayer.querySelector(`.tiny-ring[data-name="${cssEsc(n)}"]`);if(r)r.classList.add('hide');}
-    const chip=chipsEl.querySelector(`.chip[data-name="${cssEsc(n)}"]`);
-    if(chip)chip.classList.add('done');
-    if(!labelG.querySelector(`[data-name="${cssEsc(n)}"]`))addLabel(n);
-  });
-  placed=TOTAL;$done.textContent=TOTAL;
-  miss = perfect ? 0 : (miss>0?miss:4);   // sample mistake count for normal
-  $miss.textContent=miss;
-  if(!startTime)startTime=Date.now()-perfect*1000;
-  triggerWin();
-}
-
-// keyboard: modifier shortcuts + typed buzzwords
-let typed='';
-document.addEventListener('keydown',e=>{
-  if(e.shiftKey && (e.key==='W'||e.key==='w')){e.preventDefault();previewWin(false);return;}
-  if(e.shiftKey && (e.key==='P'||e.key==='p')){e.preventDefault();previewWin(true);return;}
-  if(/^[a-zA-Z]$/.test(e.key)){
-    typed=(typed+e.key.toLowerCase()).slice(-7);
-    if(typed.endsWith('win'))previewWin(false);
-    else if(typed.endsWith('perfect'))previewWin(true);
-  }
-});
-
-// mobile: 5 quick taps on the globe badge reveals a preview menu
-(function(){
-  const badge=document.querySelector('.badge');
-  if(!badge)return;
-  let taps=0,last=0;
-  badge.style.cursor='pointer';
-  badge.addEventListener('click',()=>{
-    const now=Date.now();
-    taps = (now-last<600)?taps+1:1;
-    last=now;
-    if(taps>=5){taps=0;showDevMenu();}
-  });
-})();
-function showDevMenu(){
-  const choice=document.createElement('div');
-  choice.style.cssText='position:fixed;left:50%;bottom:70px;transform:translateX(-50%);z-index:10005;background:#1d2b45;color:#fff;border-radius:12px;padding:10px;display:flex;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,.35)';
-  choice.innerHTML='<button class="btn" data-k="n">Preview clear</button><button class="btn" data-k="p" style="background:#e0a106">Preview PERFECT</button>';
-  document.body.appendChild(choice);
-  choice.addEventListener('click',ev=>{
-    const k=ev.target.dataset.k;
-    if(k==='n'){previewWin(false);choice.remove();}
-    else if(k==='p'){previewWin(true);choice.remove();}
-  });
-  setTimeout(()=>choice.parentNode&&choice.remove(),5000);
-}
-
 
 function applyUI(){
   document.documentElement.lang = (UI===UI?document.documentElement.lang:'');

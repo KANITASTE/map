@@ -52,9 +52,9 @@
   .lbl{font:700 12px "Segoe UI",sans-serif;fill:#0e3a78;text-anchor:middle;
     paint-order:stroke;stroke:#fff;stroke-width:2px;pointer-events:none;}
   /* tiny microstate countries: real shape + outline ring for visibility */
-  .country.tiny{stroke:#7a4ec0;stroke-width:1.2}
+  .country.tiny{stroke:#3a3a3a;stroke-width:1.2}
   .country.tiny.ok{stroke:#3aa76d}
-  .tiny-ring{fill:none;stroke:#7a4ec0;stroke-width:1;opacity:.55;pointer-events:none;transition:opacity .12s}
+  .tiny-ring{display:none}
   .tiny-ring.hide{opacity:0}
   .tiny-hit{fill:transparent;stroke:none;cursor:pointer;}
   .mlbl{font:700 11px "Segoe UI",sans-serif;fill:#5a2ea6;text-anchor:middle;
@@ -809,8 +809,8 @@ const CENTROIDS = {"Turkey": [154.4, 154.7], "Syria": [161.9, 238.1], "Iraq": [2
 const NAMES = ["Afghanistan", "Armenia", "Azerbaijan", "Bahrain", "Cyprus", "Djibouti", "Egypt", "Eritrea", "Georgia", "Iran", "Iraq", "Israel", "Jordan", "Kazakhstan", "Kuwait", "Kyrgyzstan", "Lebanon", "Oman", "Pakistan", "Palestine", "Qatar", "Saudi Arabia", "Sudan", "Syria", "Tajikistan", "Turkey", "Turkmenistan", "United Arab Emirates", "Uzbekistan", "Yemen"];
 const TINY = {"Lebanon": {"cx": 151.1, "cy": 246.5}, "Israel": {"cx": 135.4, "cy": 283.5}, "Palestine": {"cx": 139.0, "cy": 280.1}, "Cyprus": {"cx": 112.6, "cy": 229.7}, "Kuwait": {"cx": 305.7, "cy": 316.1}, "Qatar": {"cx": 356.4, "cy": 390.4}, "Djibouti": {"cx": 245.2, "cy": 574.8}, "Bahrain": {"cx": 349.0, "cy": 365.9}};
 const LABELS = {"Turkey": "トルコ", "Syria": "シリア", "Iraq": "イラク", "Iran": "イラン", "Jordan": "ヨルダン", "Lebanon": "レバノン", "Israel": "イスラエル", "Palestine": "パレスチナ", "Cyprus": "キプロス", "Saudi Arabia": "サウジアラビア", "Kuwait": "クウェート", "Qatar": "カタール", "Bahrain": "バーレーン", "United Arab Emirates": "アラブ首長国連邦", "Oman": "オマーン", "Yemen": "イエメン", "Egypt": "エジプト", "Georgia": "ジョージア", "Armenia": "アルメニア", "Azerbaijan": "アゼルバイジャン", "Turkmenistan": "トルクメニスタン", "Uzbekistan": "ウズベキスタン", "Kyrgyzstan": "キルギス", "Tajikistan": "タジキスタン", "Kazakhstan": "カザフスタン", "Afghanistan": "アフガニスタン", "Pakistan": "パキスタン", "Sudan": "スーダン", "Eritrea": "エリトリア", "Djibouti": "ジブチ"};
-const UI = {"title": "中東と周辺国", "map_aria": "中東と周辺国の地図", "placed": "配置済み", "mistakes": "ミス", "hide": "国名を隠す", "show": "国名を表示", "restart": "最初から", "listhead": "国名をドラッグして正しい場所に置いてください", "howto_h": "あそびかた", "howto_p": "リストの国名をドラッグして、地図の正しい場所にドロップしよう！", "correct": "正解！", "wrong": "ちがう場所だよ", "complete": "クリア！", "perfect": "パーフェクト！", "ribbon": "ノーミス達成", "mapname": "中東と周辺国", "c_countries": "国の数", "c_mistakes": "ミス", "c_time": "タイム", "msg_normal": "おみごと！ {n}か国すべて配置、ミスは{m}回でした。<br>ノーミスを目指してもう一度挑戦！", "msg_perfect": "完璧！ {n}か国すべてをミスなしで配置しました。<br>あなたは{map}マスターです！ 🌍✨", "playagain": "もう一度", "credit": "30か国 · 国名ドラッグ＆ドロップ地理クイズ", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">日本語版</a><span class=\"sep\">›</span><span>中東と周辺国</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ 地域選択へ</a> <a href=\"../en/middle-east.html\">🇬🇧 English</a>"};
-const VERSION = "v1.3";
+const UI = {"title": "中東と周辺国", "map_aria": "中東と周辺国の地図", "placed": "配置済み", "mistakes": "ミス", "hide": "国名を隠す", "show": "国名を表示", "restart": "最初から", "listhead": "国名をドラッグして正しい場所に置いてください", "howto_h": "あそびかた", "howto_p": "リストの国名をドラッグして、地図の正しい場所にドロップしよう！", "correct": "正解！", "wrong": "ちがう場所だよ", "complete": "クリア！", "perfect": "パーフェクト！", "ribbon": "ノーミス達成", "mapname": "中東と周辺国", "c_countries": "国の数", "c_mistakes": "ミス", "c_time": "タイム", "msg_normal": "おみごと！ {n}か国すべて配置、ミスは{m}回でした。<br>ノーミスを目指してもう一度挑戦！", "msg_perfect": "完璧！ {n}か国すべてをミスなしで配置しました。<br>あなたは{map}マスターです！ 🌍✨", "playagain": "もう一度", "credit": "30か国 · 国名ドラッグ＆ドロップ地理クイズ", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">日本語版</a><span class=\"sep\">›</span><span>中東と周辺国</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ 地域選択へ</a> <a href=\"howto.html\">👆 遊びかた</a> <a href=\"../en/middle-east.html\">🇬🇧 English</a>"};
+const VERSION = "v1.4";
 
 const map=document.getElementById('map');
 const landG=document.getElementById('land');
@@ -987,14 +987,20 @@ function moveGhost(x,y){
   const c=countryAt(dp.x,dp.y);
   if(c && !c.classList.contains('ok'))c.classList.add('hover');
 }
+function overMap(x,y){
+  const r=map.getBoundingClientRect();
+  return x>=r.left && x<=r.right && y>=r.top && y<=r.bottom;
+}
 function endDrag(x,y){
   if(!drag)return;
   const dp=dropPoint(x,y);
-  const target=countryAt(dp.x,dp.y);
   drag.chip.classList.remove('dragging');
   ghost.style.display='none';
   crosshair.style.display='none';
   clearHover();
+  // If released outside the map area (e.g. back on the name list), cancel with no penalty.
+  if(!overMap(dp.x,dp.y)){ drag=null; return; }
+  const target=countryAt(dp.x,dp.y);
   if(target && target.dataset.name===drag.name && !isPlaced(drag.name)){
     place(drag.name);toastMsg(UI.correct,'ok');
   }else{

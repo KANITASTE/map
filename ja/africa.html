@@ -52,9 +52,9 @@
   .lbl{font:700 12px "Segoe UI",sans-serif;fill:#0e3a78;text-anchor:middle;
     paint-order:stroke;stroke:#fff;stroke-width:2px;pointer-events:none;}
   /* tiny microstate countries: real shape + outline ring for visibility */
-  .country.tiny{stroke:#7a4ec0;stroke-width:1.2}
+  .country.tiny{stroke:#3a3a3a;stroke-width:1.2}
   .country.tiny.ok{stroke:#3aa76d}
-  .tiny-ring{fill:none;stroke:#7a4ec0;stroke-width:1;opacity:.55;pointer-events:none;transition:opacity .12s}
+  .tiny-ring{display:none}
   .tiny-ring.hide{opacity:0}
   .tiny-hit{fill:transparent;stroke:none;cursor:pointer;}
   .mlbl{font:700 11px "Segoe UI",sans-serif;fill:#5a2ea6;text-anchor:middle;
@@ -878,8 +878,8 @@ const CENTROIDS = {"Morocco": [227.4, 51.8], "Western Sahara": [167.5, 118.4], "
 const NAMES = ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cameroon", "Central African Republic", "Chad", "Côte d'Ivoire", "Djibouti", "DR Congo", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Republic of the Congo", "Rwanda", "Senegal", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda", "Western Sahara", "Zambia", "Zimbabwe"];
 const TINY = {"Gambia": {"cx": 158.7, "cy": 208.5}, "Guinea-Bissau": {"cx": 163.9, "cy": 220.4}, "Sierra Leone": {"cx": 186.5, "cy": 243.3}, "Liberia": {"cx": 206.5, "cy": 258.2}, "Togo": {"cx": 280.6, "cy": 247.1}, "Equatorial Guinea": {"cx": 347.6, "cy": 293.0}, "Djibouti": {"cx": 590.7, "cy": 218.9}, "Rwanda": {"cx": 495.1, "cy": 321.0}, "Burundi": {"cx": 495.1, "cy": 331.6}, "Eswatini": {"cx": 505.7, "cy": 511.9}, "Lesotho": {"cx": 481.9, "cy": 535.3}};
 const LABELS = {"Morocco": "モロッコ", "Western Sahara": "西サハラ", "Algeria": "アルジェリア", "Tunisia": "チュニジア", "Libya": "リビア", "Egypt": "エジプト", "Mauritania": "モーリタニア", "Mali": "マリ", "Niger": "ニジェール", "Chad": "チャド", "Sudan": "スーダン", "South Sudan": "南スーダン", "Senegal": "セネガル", "Gambia": "ガンビア", "Guinea-Bissau": "ギニアビサウ", "Guinea": "ギニア", "Sierra Leone": "シエラレオネ", "Liberia": "リベリア", "Côte d'Ivoire": "コートジボワール", "Burkina Faso": "ブルキナファソ", "Ghana": "ガーナ", "Togo": "トーゴ", "Benin": "ベナン", "Nigeria": "ナイジェリア", "Cameroon": "カメルーン", "Central African Republic": "中央アフリカ共和国", "DR Congo": "コンゴ民主共和国", "Republic of the Congo": "コンゴ共和国", "Gabon": "ガボン", "Equatorial Guinea": "赤道ギニア", "Angola": "アンゴラ", "Ethiopia": "エチオピア", "Eritrea": "エリトリア", "Djibouti": "ジブチ", "Somalia": "ソマリア", "Uganda": "ウガンダ", "Kenya": "ケニア", "Rwanda": "ルワンダ", "Burundi": "ブルンジ", "Tanzania": "タンザニア", "Zambia": "ザンビア", "Malawi": "マラウイ", "Mozambique": "モザンビーク", "Zimbabwe": "ジンバブエ", "Botswana": "ボツワナ", "Namibia": "ナミビア", "South Africa": "南アフリカ", "Eswatini": "エスワティニ", "Lesotho": "レソト", "Madagascar": "マダガスカル"};
-const UI = {"title": "アフリカ", "map_aria": "アフリカの地図", "placed": "配置済み", "mistakes": "ミス", "hide": "国名を隠す", "show": "国名を表示", "restart": "最初から", "listhead": "国名をドラッグして正しい場所に置いてください", "howto_h": "あそびかた", "howto_p": "リストの国名をドラッグして、地図の正しい場所にドロップしよう！", "correct": "正解！", "wrong": "ちがう場所だよ", "complete": "クリア！", "perfect": "パーフェクト！", "ribbon": "ノーミス達成", "c_countries": "数", "c_mistakes": "ミス", "c_time": "タイム", "msg_normal": "おみごと！ {n}すべて配置、ミスは{m}回でした。<br>ノーミスを目指してもう一度挑戦！", "msg_perfect": "完璧！ {n}すべてをミスなしで配置しました。<br>あなたは{map}マスターです！ 🌍✨", "playagain": "もう一度", "credit": "50か国 · 国名ドラッグ＆ドロップ地理クイズ", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">日本語版</a><span class=\"sep\">›</span><span>アフリカ</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ 地域選択へ</a> <a href=\"../en/africa.html\">🇬🇧 English</a>", "mapname": "アフリカ"};
-const VERSION = "v1.1";
+const UI = {"title": "アフリカ", "map_aria": "アフリカの地図", "placed": "配置済み", "mistakes": "ミス", "hide": "国名を隠す", "show": "国名を表示", "restart": "最初から", "listhead": "国名をドラッグして正しい場所に置いてください", "howto_h": "あそびかた", "howto_p": "リストの国名をドラッグして、地図の正しい場所にドロップしよう！", "correct": "正解！", "wrong": "ちがう場所だよ", "complete": "クリア！", "perfect": "パーフェクト！", "ribbon": "ノーミス達成", "c_countries": "数", "c_mistakes": "ミス", "c_time": "タイム", "msg_normal": "おみごと！ {n}すべて配置、ミスは{m}回でした。<br>ノーミスを目指してもう一度挑戦！", "msg_perfect": "完璧！ {n}すべてをミスなしで配置しました。<br>あなたは{map}マスターです！ 🌍✨", "playagain": "もう一度", "credit": "50か国 · 国名ドラッグ＆ドロップ地理クイズ", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">日本語版</a><span class=\"sep\">›</span><span>アフリカ</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ 地域選択へ</a> <a href=\"howto.html\">👆 遊びかた</a> <a href=\"../en/africa.html\">🇬🇧 English</a>", "mapname": "アフリカ"};
+const VERSION = "v1.2";
 
 const map=document.getElementById('map');
 const landG=document.getElementById('land');
@@ -1056,14 +1056,20 @@ function moveGhost(x,y){
   const c=countryAt(dp.x,dp.y);
   if(c && !c.classList.contains('ok'))c.classList.add('hover');
 }
+function overMap(x,y){
+  const r=map.getBoundingClientRect();
+  return x>=r.left && x<=r.right && y>=r.top && y<=r.bottom;
+}
 function endDrag(x,y){
   if(!drag)return;
   const dp=dropPoint(x,y);
-  const target=countryAt(dp.x,dp.y);
   drag.chip.classList.remove('dragging');
   ghost.style.display='none';
   crosshair.style.display='none';
   clearHover();
+  // If released outside the map area (e.g. back on the name list), cancel with no penalty.
+  if(!overMap(dp.x,dp.y)){ drag=null; return; }
+  const target=countryAt(dp.x,dp.y);
   if(target && target.dataset.name===drag.name && !isPlaced(drag.name)){
     place(drag.name);toastMsg(UI.correct,'ok');
   }else{

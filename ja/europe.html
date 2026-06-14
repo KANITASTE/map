@@ -84,6 +84,20 @@
     cursor:default;transform:none;}
   .chip.done:hover{transform:none}
 
+
+  /* zoom controls */
+  .mapwrap{touch-action:none}
+  .zoomctl{position:absolute;left:10px;bottom:10px;display:flex;flex-direction:column;gap:4px;z-index:5}
+  .zoomctl button{width:34px;height:34px;border:1px solid #cdddf2;background:#fff;border-radius:8px;
+    font-size:20px;font-weight:800;color:var(--navy);cursor:pointer;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+  .zoomctl button:hover{background:var(--sky)}
+  .zoomhint{position:absolute;right:10px;bottom:10px;font-size:10px;color:#5a6c89;
+    background:rgba(255,255,255,.8);padding:3px 7px;border-radius:6px;z-index:5;pointer-events:none}
+  /* drop crosshair (shows where the chip will land, above the finger) */
+  #crosshair{position:fixed;z-index:9998;pointer-events:none;display:none;width:46px;height:46px;
+    margin-left:-23px;margin-top:-23px}
+  #crosshair svg{width:100%;height:100%}
+
   /* Drag ghost */
   #ghost{position:fixed;z-index:9999;pointer-events:none;background:#fff;
     border:2px solid var(--navy);border-radius:8px;padding:6px 10px;
@@ -853,6 +867,12 @@
       <h3>👆 HOW TO PLAY</h3>
       <p>Drag each name from the list and drop it on the map in the correct location!</p>
     </div>
+  <div class="zoomctl">
+      <button id="zin" aria-label="zoom in">+</button>
+      <button id="zout" aria-label="zoom out">−</button>
+      <button id="zreset" aria-label="reset" style="font-size:13px">↺</button>
+    </div>
+    <div class="zoomhint" id="zoomhint"></div>
   </div>
 
   <div class="listbar">
@@ -865,6 +885,7 @@
 <div class="toplinks" id="backlinks" style="margin-top:16px"></div>
 </div><!-- /site -->
 <div id="ghost"></div>
+<div id="crosshair"><svg viewBox="0 0 46 46"><circle cx="23" cy="23" r="11" fill="none" stroke="#1f4e96" stroke-width="2.5"/><line x1="23" y1="2" x2="23" y2="13" stroke="#1f4e96" stroke-width="2.5"/><line x1="23" y1="33" x2="23" y2="44" stroke="#1f4e96" stroke-width="2.5"/><line x1="2" y1="23" x2="13" y2="23" stroke="#1f4e96" stroke-width="2.5"/><line x1="33" y1="23" x2="44" y2="23" stroke="#1f4e96" stroke-width="2.5"/><circle cx="23" cy="23" r="2.5" fill="#e35d4f"/></svg></div>
 <div id="toast"></div>
 <div class="win" id="win">
   <div class="card" id="card">
@@ -888,13 +909,14 @@ const NAMES = ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia an
 const TINY = {"Malta": {"cx": 437.2, "cy": 586.0}, "Monaco": {"cx": 360.7, "cy": 497.6}, "Liechtenstein": {"cx": 386.7, "cy": 448.7}, "San Marino": {"cx": 411.0, "cy": 491.2}, "Vatican City": {"cx": 410.3, "cy": 512.9}};
 const LABELS = {"Iceland": "アイスランド", "United Kingdom": "イギリス", "Ireland": "アイルランド", "Portugal": "ポルトガル", "Spain": "スペイン", "France": "フランス", "Switzerland": "スイス", "Germany": "ドイツ", "Poland": "ポーランド", "Czechia": "チェコ", "Slovakia": "スロバキア", "Hungary": "ハンガリー", "Austria": "オーストリア", "Norway": "ノルウェー", "Sweden": "スウェーデン", "Finland": "フィンランド", "Denmark": "デンマーク", "Estonia": "エストニア", "Latvia": "ラトビア", "Lithuania": "リトアニア", "Belarus": "ベラルーシ", "Ukraine": "ウクライナ", "Romania": "ルーマニア", "Moldova": "モルドバ", "Bulgaria": "ブルガリア", "Croatia": "クロアチア", "Bosnia and Herzegovina": "ボスニア・ヘルツェゴビナ", "Serbia": "セルビア", "Montenegro": "モンテネグロ", "Albania": "アルバニア", "North Macedonia": "北マケドニア", "Greece": "ギリシャ", "Türkiye": "トルコ", "Luxembourg": "ルクセンブルク", "Belgium": "ベルギー", "Netherlands": "オランダ", "Andorra": "アンドラ", "Italy": "イタリア", "Slovenia": "スロベニア", "Malta": "マルタ", "Monaco": "モナコ", "Liechtenstein": "リヒテンシュタイン", "San Marino": "サンマリノ", "Vatican City": "バチカン市国"};
 const UI = {"title": "ヨーロッパ", "map_aria": "ヨーロッパの地図", "placed": "配置済み", "mistakes": "ミス", "hide": "国名を隠す", "show": "国名を表示", "restart": "最初から", "listhead": "国名をドラッグして正しい場所に置いてください", "howto_h": "あそびかた", "howto_p": "リストの国名をドラッグして、地図の正しい場所にドロップしよう！", "correct": "正解！", "wrong": "ちがう場所だよ", "complete": "クリア！", "perfect": "パーフェクト！", "ribbon": "ノーミス達成", "mapname": "ヨーロッパ", "c_countries": "国の数", "c_mistakes": "ミス", "c_time": "タイム", "msg_normal": "おみごと！ {n}か国すべて配置、ミスは{m}回でした。<br>ノーミスを目指してもう一度挑戦！", "msg_perfect": "完璧！ {n}か国すべてをミスなしで配置しました。<br>あなたは{map}マスターです！ 🌍✨", "playagain": "もう一度", "credit": "44か国 · 国名ドラッグ＆ドロップ地理クイズ", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">日本語版</a><span class=\"sep\">›</span><span>ヨーロッパ</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ 地域選択へ</a> <a href=\"../en/europe.html\">🇬🇧 English</a>"};
-const VERSION = "v1.7";
+const VERSION = "v1.8";
 
 const map=document.getElementById('map');
 const landG=document.getElementById('land');
 const labelG=document.getElementById('labels-layer');
 const chipsEl=document.getElementById('chips');
 const ghost=document.getElementById('ghost');
+const crosshair=document.getElementById('crosshair');
 const toast=document.getElementById('toast');
 const $done=document.getElementById('done');
 const $miss=document.getElementById('miss');
@@ -1054,17 +1076,23 @@ function isPlaced(name){
   const chip=chipsEl.querySelector(`.chip[data-name="${cssEsc(name)}"]`);
   return chip && chip.classList.contains('done');
 }
+const DROP_DY=54;  // drop point sits this many px ABOVE the finger
+function dropPoint(x,y){ return {x:x, y:y-DROP_DY}; }
 function moveGhost(x,y){
   ghost.style.left=x+'px';ghost.style.top=y+'px';
+  const dp=dropPoint(x,y);
+  crosshair.style.left=dp.x+'px';crosshair.style.top=dp.y+'px';crosshair.style.display='block';
   clearHover();
-  const c=countryAt(x,y);
+  const c=countryAt(dp.x,dp.y);
   if(c && !c.classList.contains('ok'))c.classList.add('hover');
 }
 function endDrag(x,y){
   if(!drag)return;
-  const target=countryAt(x,y);
+  const dp=dropPoint(x,y);
+  const target=countryAt(dp.x,dp.y);
   drag.chip.classList.remove('dragging');
   ghost.style.display='none';
+  crosshair.style.display='none';
   clearHover();
   if(target && target.dataset.name===drag.name && !isPlaced(drag.name)){
     place(drag.name);toastMsg(UI.correct,'ok');
@@ -1086,7 +1114,7 @@ document.addEventListener('pointermove',e=>{
 },{passive:false});
 document.addEventListener('pointerup',e=>{if(drag)endDrag(e.clientX,e.clientY);});
 document.addEventListener('pointercancel',()=>{
-  if(drag){drag.chip.classList.remove('dragging');ghost.style.display='none';clearHover();drag=null;}
+  if(drag){drag.chip.classList.remove('dragging');ghost.style.display='none';crosshair.style.display='none';clearHover();drag=null;}
 });
 
 /* labels toggle */
@@ -1199,6 +1227,64 @@ function applyUI(){
   const cb=document.getElementById('crumb'); if(cb)cb.innerHTML=UI.crumb;
   const bl=document.getElementById('backlinks'); if(bl)bl.innerHTML=UI.backlinks;
 }
+/* ---------- zoom & pan ---------- */
+const VB={x:0,y:0,w:800,h:600};
+const VB0={x:0,y:0,w:800,h:600};
+function applyVB(){ map.setAttribute('viewBox',`${VB.x} ${VB.y} ${VB.w} ${VB.h}`); }
+function clampVB(){
+  if(VB.w>VB0.w)VB.w=VB0.w; if(VB.h>VB0.h)VB.h=VB0.h;
+  if(VB.x<VB0.x)VB.x=VB0.x; if(VB.y<VB0.y)VB.y=VB0.y;
+  if(VB.x+VB.w>VB0.x+VB0.w)VB.x=VB0.x+VB0.w-VB.w;
+  if(VB.y+VB.h>VB0.y+VB0.h)VB.y=VB0.y+VB0.h-VB.h;
+}
+function zoomAt(cx,cy,factor){
+  // cx,cy in client coords -> map coords
+  const rect=map.getBoundingClientRect();
+  const mx=VB.x+(cx-rect.left)/rect.width*VB.w;
+  const my=VB.y+(cy-rect.top)/rect.height*VB.h;
+  let nw=VB.w/factor, nh=VB.h/factor;
+  const minW=VB0.w/6;  // max zoom 6x
+  if(nw<minW){nw=minW;nh=minW*VB0.h/VB0.w;}
+  VB.x=mx-(mx-VB.x)*(nw/VB.w);
+  VB.y=my-(my-VB.y)*(nh/VB.h);
+  VB.w=nw;VB.h=nh;clampVB();applyVB();
+}
+function zoomCenter(factor){const r=map.getBoundingClientRect();zoomAt(r.left+r.width/2,r.top+r.height/2,factor);}
+document.getElementById('zin').addEventListener('click',()=>zoomCenter(1.4));
+document.getElementById('zout').addEventListener('click',()=>zoomCenter(1/1.4));
+document.getElementById('zreset').addEventListener('click',()=>{VB.x=VB0.x;VB.y=VB0.y;VB.w=VB0.w;VB.h=VB0.h;applyVB();});
+
+// wheel zoom
+map.addEventListener('wheel',e=>{e.preventDefault();zoomAt(e.clientX,e.clientY, e.deltaY<0?1.15:1/1.15);},{passive:false});
+
+// pan + pinch via pointer events on the map (only when not dragging a chip)
+let panPts=new Map(), panLast=null, pinchLast=null;
+map.addEventListener('pointerdown',e=>{ if(drag)return; panPts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(panPts.size===1)panLast={x:e.clientX,y:e.clientY}; });
+map.addEventListener('pointermove',e=>{
+  if(drag)return;
+  if(!panPts.has(e.pointerId))return;
+  panPts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  const pts=[...panPts.values()];
+  if(pts.length===1 && panLast){
+    const r=map.getBoundingClientRect();
+    const dx=(e.clientX-panLast.x)/r.width*VB.w;
+    const dy=(e.clientY-panLast.y)/r.height*VB.h;
+    VB.x-=dx;VB.y-=dy;clampVB();applyVB();
+    panLast={x:e.clientX,y:e.clientY};
+  }else if(pts.length===2){
+    const d=Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y);
+    const mid={x:(pts[0].x+pts[1].x)/2,y:(pts[0].y+pts[1].y)/2};
+    if(pinchLast){ zoomAt(mid.x,mid.y, d/pinchLast); }
+    pinchLast=d;
+  }
+});
+function panEnd(e){ panPts.delete(e.pointerId); if(panPts.size<2)pinchLast=null; if(panPts.size===0)panLast=null; }
+map.addEventListener('pointerup',panEnd);
+map.addEventListener('pointercancel',panEnd);
+map.addEventListener('pointerleave',panEnd);
+applyVB();
+
 applyUI();
 reset();
 </script>

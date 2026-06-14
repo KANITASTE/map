@@ -31,8 +31,8 @@ Drag country/state names onto a blank map to learn world geography.
 index.html              TOP（言語選択）
 updates.html            更新情報
 assets/style.css        共通スタイル
-ja/  ... 日本語版（index.html = 地域選択 ＋ 各地域ページ）
-en/  ... English（index.html = region select ＋ region pages）
+ja/  ... 日本語版（index.html = 地域選択, howto.html = 遊びかた, 各地域ページ）
+en/  ... English（index.html = region select, howto.html = how to play, region pages）
 ```
 
 ## 遊び方 / How to play

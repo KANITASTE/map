@@ -52,9 +52,9 @@
   .lbl{font:700 12px "Segoe UI",sans-serif;fill:#0e3a78;text-anchor:middle;
     paint-order:stroke;stroke:#fff;stroke-width:2px;pointer-events:none;}
   /* tiny microstate countries: real shape + outline ring for visibility */
-  .country.tiny{stroke:#7a4ec0;stroke-width:1.2}
+  .country.tiny{stroke:#3a3a3a;stroke-width:1.2}
   .country.tiny.ok{stroke:#3aa76d}
-  .tiny-ring{fill:none;stroke:#7a4ec0;stroke-width:1;opacity:.55;pointer-events:none;transition:opacity .12s}
+  .tiny-ring{display:none}
   .tiny-ring.hide{opacity:0}
   .tiny-hit{fill:transparent;stroke:none;cursor:pointer;}
   .mlbl{font:700 11px "Segoe UI",sans-serif;fill:#5a2ea6;text-anchor:middle;
@@ -878,8 +878,8 @@ const CENTROIDS = {"Morocco": [227.4, 51.8], "Western Sahara": [167.5, 118.4], "
 const NAMES = ["Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi", "Cameroon", "Central African Republic", "Chad", "Côte d'Ivoire", "Djibouti", "DR Congo", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini", "Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar", "Malawi", "Mali", "Mauritania", "Morocco", "Mozambique", "Namibia", "Niger", "Nigeria", "Republic of the Congo", "Rwanda", "Senegal", "Sierra Leone", "Somalia", "South Africa", "South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda", "Western Sahara", "Zambia", "Zimbabwe"];
 const TINY = {"Gambia": {"cx": 158.7, "cy": 208.5}, "Guinea-Bissau": {"cx": 163.9, "cy": 220.4}, "Sierra Leone": {"cx": 186.5, "cy": 243.3}, "Liberia": {"cx": 206.5, "cy": 258.2}, "Togo": {"cx": 280.6, "cy": 247.1}, "Equatorial Guinea": {"cx": 347.6, "cy": 293.0}, "Djibouti": {"cx": 590.7, "cy": 218.9}, "Rwanda": {"cx": 495.1, "cy": 321.0}, "Burundi": {"cx": 495.1, "cy": 331.6}, "Eswatini": {"cx": 505.7, "cy": 511.9}, "Lesotho": {"cx": 481.9, "cy": 535.3}};
 const LABELS = {};
-const UI = {"title": "AFRICA", "map_aria": "Map of Africa", "placed": "Placed", "mistakes": "Mistakes", "hide": "Hide labels", "show": "Show labels", "restart": "Restart", "listhead": "DRAG THE NAMES AND DROP THEM ON THE CORRECT LOCATION", "howto_h": "HOW TO PLAY", "howto_p": "Drag each name from the list and drop it on the map in the correct location!", "correct": "Correct!", "wrong": "Not there — try again", "complete": "Complete!", "perfect": "PERFECT!", "ribbon": "PERFECT CLEAR", "c_countries": "PLACES", "c_mistakes": "MISTAKES", "c_time": "TIME", "msg_normal": "Great job! All {n} placed, with {m} mistake{s}.<br>Try again for a perfect run!", "msg_perfect": "Flawless! You placed all {n} with zero mistakes.<br>A true {map} Master! 🌍✨", "playagain": "Play again", "credit": "50 countries · drag & drop geography quiz", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">English</a><span class=\"sep\">›</span><span>Africa</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ Regions</a> <a href=\"../ja/africa.html\">🇯🇵 日本語</a>", "mapname": "Africa"};
-const VERSION = "v1.1";
+const UI = {"title": "AFRICA", "map_aria": "Map of Africa", "placed": "Placed", "mistakes": "Mistakes", "hide": "Hide labels", "show": "Show labels", "restart": "Restart", "listhead": "DRAG THE NAMES AND DROP THEM ON THE CORRECT LOCATION", "howto_h": "HOW TO PLAY", "howto_p": "Drag each name from the list and drop it on the map in the correct location!", "correct": "Correct!", "wrong": "Not there — try again", "complete": "Complete!", "perfect": "PERFECT!", "ribbon": "PERFECT CLEAR", "c_countries": "PLACES", "c_mistakes": "MISTAKES", "c_time": "TIME", "msg_normal": "Great job! All {n} placed, with {m} mistake{s}.<br>Try again for a perfect run!", "msg_perfect": "Flawless! You placed all {n} with zero mistakes.<br>A true {map} Master! 🌍✨", "playagain": "Play again", "credit": "50 countries · drag & drop geography quiz", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">English</a><span class=\"sep\">›</span><span>Africa</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ Regions</a> <a href=\"howto.html\">👆 How to Play</a> <a href=\"../ja/africa.html\">🇯🇵 日本語</a>", "mapname": "Africa"};
+const VERSION = "v1.2";
 
 const map=document.getElementById('map');
 const landG=document.getElementById('land');
@@ -1056,14 +1056,20 @@ function moveGhost(x,y){
   const c=countryAt(dp.x,dp.y);
   if(c && !c.classList.contains('ok'))c.classList.add('hover');
 }
+function overMap(x,y){
+  const r=map.getBoundingClientRect();
+  return x>=r.left && x<=r.right && y>=r.top && y<=r.bottom;
+}
 function endDrag(x,y){
   if(!drag)return;
   const dp=dropPoint(x,y);
-  const target=countryAt(dp.x,dp.y);
   drag.chip.classList.remove('dragging');
   ghost.style.display='none';
   crosshair.style.display='none';
   clearHover();
+  // If released outside the map area (e.g. back on the name list), cancel with no penalty.
+  if(!overMap(dp.x,dp.y)){ drag=null; return; }
+  const target=countryAt(dp.x,dp.y);
   if(target && target.dataset.name===drag.name && !isPlaced(drag.name)){
     place(drag.name);toastMsg(UI.correct,'ok');
   }else{

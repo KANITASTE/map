@@ -1,65 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-scheme="ocean" data-headfont="Poppins">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How to Play — Geo Quiz</title>
-<link rel="stylesheet" href="../assets/style.css">
-<style>
-  .howto-wrap{max-width:760px;margin:0 auto}
-  .step{background:#fff;border:1px solid #e7ddc6;border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:var(--shadow)}
-  .step h3{margin:0 0 8px;color:var(--navy-d);font-size:18px;display:flex;align-items:center;gap:8px}
-  .step .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;
-    border-radius:50%;background:var(--navy);color:#fff;font-size:15px;flex:none}
-  .step p{margin:6px 0;line-height:1.7;color:var(--ink)}
-  .step ul{margin:6px 0;padding-left:20px;line-height:1.7}
-  .tipbox{background:var(--sky);border:1px solid #cfe0f5;border-radius:12px;padding:14px 18px;margin-bottom:14px}
-  .tipbox h3{margin:0 0 6px;color:var(--navy-d);font-size:16px}
-  .tipbox p{margin:4px 0;line-height:1.7}
-</style>
+<link rel="stylesheet" href="../assets/home.css">
 </head>
 <body>
-<div class="site">
-  <div class="crumb">
-    <a href="../index.html">🏠 TOP</a><span class="sep">›</span>
-    <a href="index.html">English</a><span class="sep">›</span>
-    <span>How to Play</span>
-  </div>
+<div class="page">
+  <header class="topbar">
+    <a class="brand" href="../index.html">
+      <svg class="globe" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" fill="var(--badge-bg)" stroke="var(--brand)" stroke-width="2.4"/>
+        <ellipse cx="24" cy="24" rx="9" ry="21" fill="none" stroke="var(--brand)" stroke-width="2.2"/>
+        <path d="M4 18 H44 M4 30 H44" stroke="var(--brand)" stroke-width="2.2"/>
+        <path d="M14 12 C20 16 28 16 34 12 M14 36 C20 32 28 32 34 36" stroke="var(--brand)" stroke-width="2.2" fill="none"/>
+      </svg>
+      <span class="wordmark">Geo Quiz</span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg><span class="lbl">Home</span></a>
+      <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="lbl">Regions</span></a>
+      <details class="lang-dd">
+        <summary class="lang-switch">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span>English</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="menu">
+          <a href="../ja/howto.html">日本語</a>
+          <a class="cur" href="howto.html">English</a>
+        </div>
+      </details>
+    </nav>
+  </header>
 
-  <div class="hero">
-    <span class="globe-emoji">👆</span>
-    <div class="kicker">How to Play</div>
-    <h1>How to Play <span class="pin">📍</span></h1>
-    <p>A geography quiz where you drag country (or state) names onto a blank map to learn them.</p>
-  </div>
+  <section class="doc-hero">
+    <span class="badge">How to Play / 遊びかた</span>
+    <h1>How to Play</h1>
+    <p>A geography quiz where you drag country (or state) names onto a blank map to learn them. It's simple — you can start in three steps.</p>
+  </section>
 
-  <hr class="flightline">
-
-  <div class="howto-wrap">
+  <div class="doc">
     <div class="step">
-      <h3><span class="num">1</span> Pick a region</h3>
-      <p>From the region page, choose what you want to play — Europe, Africa, US states, and more.</p>
+      <span class="num">1</span>
+      <div class="stxt">
+        <h3>Pick a region</h3>
+        <p>From the region page, choose what you want to play — Europe, Africa, US states, and more.</p>
+      </div>
     </div>
-
     <div class="step">
-      <h3><span class="num">2</span> Drag a name</h3>
-      <p>A list of names sits below the map (on mobile) or beside it (on desktop). Grab a name with your finger or mouse and move it onto the map.</p>
+      <span class="num">2</span>
+      <div class="stxt">
+        <h3>Drag a name</h3>
+        <p>A list of names sits below the map (on mobile) or beside it (on desktop). Grab a name with your finger or mouse and move it onto the map.</p>
+      </div>
     </div>
-
     <div class="step">
-      <h3><span class="num">3</span> Drop it in the right place</h3>
-      <p>Release over the correct spot. A correct answer turns the country green and shows its name.</p>
-      <p>While dragging, a <b>crosshair pointer (🎯)</b> appears just above your finger. Its center is where the drop is checked — so even tiny countries are easy to target.</p>
+      <span class="num">3</span>
+      <div class="stxt">
+        <h3>Drop it in the right place</h3>
+        <p>Release over the correct spot. A correct answer turns the country green and shows its name.</p>
+        <p>While dragging, a <b>crosshair pointer (🎯)</b> appears just above your finger. Its center is where the drop is checked — so even tiny countries are easy to target.</p>
+      </div>
     </div>
-
     <div class="step">
-      <h3><span class="num">4</span> Place them all to win!</h3>
-      <p>Place every name correctly to finish, with a confetti celebration.</p>
-      <p>Finish with <b>zero mistakes</b> for a special "Region Master" perfect screen. Your time is recorded too, so try again to beat it.</p>
+      <span class="num">4</span>
+      <div class="stxt">
+        <h3>Place them all to win!</h3>
+        <p>Place every name correctly to finish, with a confetti celebration.</p>
+        <p>Finish with <b>zero mistakes</b> for a special "Region Master" perfect screen. Your time is recorded too, so try again to beat it.</p>
+      </div>
     </div>
 
     <div class="tipbox">
-      <h3>🔍 Zoom &amp; pan</h3>
+      <h3><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>Zoom &amp; pan</h3>
       <p>If a small country is hard to hit, zoom in on the map.</p>
       <ul>
         <li><b>Desktop</b>: the ＋ / − buttons at the bottom-left, or your mouse wheel. Drag the map to pan.</li>
@@ -69,7 +84,7 @@
     </div>
 
     <div class="tipbox">
-      <h3>💡 More tips</h3>
+      <h3><span class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></span>More tips</h3>
       <ul>
         <li>Releasing a name over the list (outside the map) does <b>not</b> count as a mistake — you can safely try again.</li>
         <li>Use "Hide labels" to remove the placed names and test yourself.</li>
@@ -78,14 +93,16 @@
     </div>
   </div>
 
-  <div class="toplinks">
-    <a class="primary" href="index.html">↩ Regions</a>
-    <a href="../ja/howto.html">🇯🇵 日本語</a>
-    <a href="../updates.html">📰 Updates</a>
+  <div class="linkrow">
+    <a class="primary" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Choose a region</a>
+    <a href="../ja/howto.html">日本語</a>
+    <a href="../updates.html">Updates</a>
   </div>
 
-  <hr class="flightline">
-  <div class="site-foot">Geo Quiz · <span class="badge-ver">How to Play</span></div>
+  <footer class="foot">
+    Geo Quiz — 無料の地理学習ゲーム / Free geography learning game<br>
+    © Geo Quiz
+  </footer>
 </div>
 </body>
 </html>

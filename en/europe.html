@@ -52,8 +52,8 @@
   .lbl{font:700 12px "Segoe UI",sans-serif;fill:#0e3a78;text-anchor:middle;
     paint-order:stroke;stroke:#fff;stroke-width:2px;pointer-events:none;}
   /* tiny microstate countries: real shape + outline ring for visibility */
-  .country.tiny{stroke:#3a3a3a;stroke-width:1.2}
-  .country.tiny.ok{stroke:#3aa76d}
+  .country.tiny{stroke:var(--line);stroke-width:.6}
+  .country.tiny.ok{stroke:var(--line-ok);stroke-width:.8}
   .tiny-ring{display:none}
   .tiny-ring.hide{opacity:0}
   .tiny-hit{fill:transparent;stroke:none;cursor:pointer;}
@@ -909,7 +909,7 @@ const NAMES = ["Albania", "Andorra", "Austria", "Belarus", "Belgium", "Bosnia an
 const TINY = {"Malta": {"cx": 437.2, "cy": 586.0}, "Monaco": {"cx": 360.7, "cy": 497.6}, "Liechtenstein": {"cx": 386.7, "cy": 448.7}, "San Marino": {"cx": 411.0, "cy": 491.2}, "Vatican City": {"cx": 410.3, "cy": 512.9}};
 const LABELS = {};
 const UI = {"title": "EUROPE", "map_aria": "Map of Europe", "placed": "Placed", "mistakes": "Mistakes", "hide": "Hide labels", "show": "Show labels", "restart": "Restart", "listhead": "DRAG THE NAMES AND DROP THEM ON THE CORRECT LOCATION", "howto_h": "HOW TO PLAY", "howto_p": "Drag each name from the list and drop it on the map in the correct location!", "correct": "Correct!", "wrong": "Not there — try again", "complete": "Complete!", "perfect": "PERFECT!", "ribbon": "PERFECT CLEAR", "mapname": "Europe", "c_countries": "COUNTRIES", "c_mistakes": "MISTAKES", "c_time": "TIME", "msg_normal": "Great job! All {n} countries placed, with {m} mistake{s}.<br>Try again for a perfect run!", "msg_perfect": "Flawless! You placed all {n} countries with zero mistakes.<br>A true {map} Master! 🌍✨", "playagain": "Play again", "credit": "44 countries · drag & drop geography quiz", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">English</a><span class=\"sep\">›</span><span>Europe</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ Regions</a> <a href=\"howto.html\">👆 How to Play</a> <a href=\"../ja/europe.html\">🇯🇵 日本語</a>"};
-const VERSION = "v1.9";
+const VERSION = "v1.10";
 
 const map=document.getElementById('map');
 const landG=document.getElementById('land');

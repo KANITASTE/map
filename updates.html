@@ -1,30 +1,49 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-scheme="ocean" data-headfont="Poppins">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>更新情報 / Updates — Geo Quiz</title>
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/home.css">
 </head>
 <body>
-<div class="site">
-  <div class="crumb">
-    <a href="index.html">🏠 TOP</a><span class="sep">›</span>
-    <span>更新情報 / Updates</span>
-  </div>
+<div class="page">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <svg class="globe" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" fill="var(--badge-bg)" stroke="var(--brand)" stroke-width="2.4"/>
+        <ellipse cx="24" cy="24" rx="9" ry="21" fill="none" stroke="var(--brand)" stroke-width="2.2"/>
+        <path d="M4 18 H44 M4 30 H44" stroke="var(--brand)" stroke-width="2.2"/>
+        <path d="M14 12 C20 16 28 16 34 12 M14 36 C20 32 28 32 34 36" stroke="var(--brand)" stroke-width="2.2" fill="none"/>
+      </svg>
+      <span class="wordmark">Geo Quiz</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg><span class="lbl">TOP</span></a>
+      <a href="ja/howto.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.9.5-1.1 1-1.1 1.8M12 17h.01"/></svg><span class="lbl">遊びかた</span></a>
+      <details class="lang-dd">
+        <summary class="lang-switch">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span>言語</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="menu">
+          <a href="ja/index.html">日本語版</a>
+          <a href="en/index.html">English</a>
+        </div>
+      </details>
+    </nav>
+  </header>
 
-  <div class="hero">
-    <span class="globe-emoji">📰</span>
-    <div class="kicker">News &amp; Changelog</div>
-    <h1>更新情報 <span class="pin">📍</span></h1>
+  <section class="doc-hero">
+    <span class="badge">更新情報 / Updates</span>
+    <h1>更新情報</h1>
     <p>サイトとゲームの更新履歴です。/ Update history of the site and games.</p>
-  </div>
+  </section>
 
-  <hr class="flightline">
-
-  <div class="updates">
-    <div class="update">
-      <span class="date">2026-06-14</span><span class="ver">Update</span>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-head"><span class="tl-date">2026.06.14</span><span class="tl-ver">Update</span></div>
       <h3>遊びかたページ追加・操作の改善 👆</h3>
       <ul>
         <li>「遊びかた」ページを日本語版・英語版に追加しました。</li>
@@ -34,8 +53,8 @@
       </ul>
     </div>
 
-    <div class="update">
-      <span class="date">2026-06-14</span><span class="ver">Update</span>
+    <div class="tl-item">
+      <div class="tl-head"><span class="tl-date">2026.06.14</span><span class="tl-ver">Update</span></div>
       <h3>アフリカ追加・アメリカ50州化・操作改善 🌍</h3>
       <ul>
         <li>アフリカ（50か国）を日本語版・英語版で公開。全8地域がプレイ可能になりました。</li>
@@ -45,8 +64,8 @@
       </ul>
     </div>
 
-    <div class="update">
-      <span class="date">2026-06-14</span><span class="ver">Regions v1.0</span>
+    <div class="tl-item">
+      <div class="tl-head"><span class="tl-date">2026.06.14</span><span class="tl-ver">Regions v1.0</span></div>
       <h3>5地域を追加 / 5 new regions added 🌏</h3>
       <ul>
         <li>アメリカ（47州）、南米（13か国）、東南アジア（11か国）、オセアニア（7か国）、東アジア（6か国）を日本語版・英語版で公開しました。</li>
@@ -57,8 +76,8 @@
       </ul>
     </div>
 
-    <div class="update">
-      <span class="date">2026-06-14</span><span class="ver">Middle East v1.0</span>
+    <div class="tl-item">
+      <div class="tl-head"><span class="tl-date">2026.06.14</span><span class="tl-ver">Middle East v1.0</span></div>
       <h3>中東と周辺国 を追加 / Middle East added 🕌</h3>
       <ul>
         <li>中東と周辺国（30か国）を日本語版・英語版で公開しました。</li>
@@ -67,8 +86,8 @@
       </ul>
     </div>
 
-    <div class="update">
-      <span class="date">2026-06-14</span><span class="ver">Site v1.0</span>
+    <div class="tl-item">
+      <div class="tl-head"><span class="tl-date">2026.06.14</span><span class="tl-ver">Site v1.0</span></div>
       <h3>サイト公開 / Site launched 🎉</h3>
       <ul>
         <li>TOPページ・言語選択（日本語／English）を公開しました。</li>
@@ -77,8 +96,8 @@
       </ul>
     </div>
 
-    <div class="update">
-      <span class="date">2026-06-14</span><span class="ver">Europe v1.4</span>
+    <div class="tl-item">
+      <div class="tl-head"><span class="tl-date">2026.06.14</span><span class="tl-ver">Europe v1.4</span></div>
       <h3>ヨーロッパ ゲーム / Europe game</h3>
       <ul>
         <li>白地図に国名をドラッグ＆ドロップする基本ゲームを実装。</li>
@@ -89,14 +108,16 @@
     </div>
   </div>
 
-  <div class="toplinks">
-    <a class="primary" href="index.html">🏠 TOPへ戻る</a>
-    <a href="ja/index.html">🇯🇵 日本語版</a>
-    <a href="en/index.html">🇬🇧 English</a>
+  <div class="linkrow">
+    <a class="primary" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>TOPへ戻る</a>
+    <a href="ja/index.html">日本語版</a>
+    <a href="en/index.html">English</a>
   </div>
 
-  <hr class="flightline">
-  <div class="site-foot">Geo Quiz · <span class="badge-ver">Updates</span></div>
+  <footer class="foot">
+    Geo Quiz — 無料の地理学習ゲーム / Free geography learning game<br>
+    © Geo Quiz
+  </footer>
 </div>
 </body>
 </html>

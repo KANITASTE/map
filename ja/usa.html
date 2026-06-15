@@ -52,8 +52,8 @@
   .lbl{font:700 12px "Segoe UI",sans-serif;fill:#0e3a78;text-anchor:middle;
     paint-order:stroke;stroke:#fff;stroke-width:2px;pointer-events:none;}
   /* tiny microstate countries: real shape + outline ring for visibility */
-  .country.tiny{stroke:#3a3a3a;stroke-width:1.2}
-  .country.tiny.ok{stroke:#3aa76d}
+  .country.tiny{stroke:var(--line);stroke-width:.6}
+  .country.tiny.ok{stroke:var(--line-ok);stroke-width:.8}
   .tiny-ring{display:none}
   .tiny-ring.hide{opacity:0}
   .tiny-hit{fill:transparent;stroke:none;cursor:pointer;}
@@ -552,7 +552,7 @@ const NAMES = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colora
 const TINY = {"Connecticut": {"cx": 699.0, "cy": 222.1}, "Rhode Island": {"cx": 725.1, "cy": 223.2}, "Delaware": {"cx": 672.5, "cy": 261.4}, "Hawaii": {"cx": 293.2, "cy": 528.8}};
 const LABELS = {"Washington": "ワシントン", "Oregon": "オレゴン", "Idaho": "アイダホ", "Montana": "モンタナ", "Wyoming": "ワイオミング", "North Dakota": "ノースダコタ", "South Dakota": "サウスダコタ", "Nebraska": "ネブラスカ", "Minnesota": "ミネソタ", "Iowa": "アイオワ", "Wisconsin": "ウィスコンシン", "Michigan": "ミシガン", "Nevada": "ネバダ", "California": "カリフォルニア", "Arizona": "アリゾナ", "Kansas": "カンザス", "Missouri": "ミズーリ", "Illinois": "イリノイ", "Indiana": "インディアナ", "Ohio": "オハイオ", "Oklahoma": "オクラホマ", "Texas": "テキサス", "Arkansas": "アーカンソー", "Tennessee": "テネシー", "Kentucky": "ケンタッキー", "West Virginia": "ウェストバージニア", "Virginia": "バージニア", "North Carolina": "ノースカロライナ", "South Carolina": "サウスカロライナ", "Georgia": "ジョージア", "Alabama": "アラバマ", "Mississippi": "ミシシッピ", "Louisiana": "ルイジアナ", "Florida": "フロリダ", "Pennsylvania": "ペンシルベニア", "New York": "ニューヨーク", "Maine": "メイン", "Vermont": "バーモント", "New Hampshire": "ニューハンプシャー", "Massachusetts": "マサチューセッツ", "Connecticut": "コネチカット", "Rhode Island": "ロードアイランド", "New Jersey": "ニュージャージー", "Maryland": "メリーランド", "Delaware": "デラウェア", "Alaska": "アラスカ", "Hawaii": "ハワイ", "Utah": "ユタ", "Colorado": "コロラド", "New Mexico": "ニューメキシコ"};
 const UI = {"title": "アメリカ（州）", "map_aria": "アメリカ（州）の地図", "placed": "配置済み", "mistakes": "ミス", "hide": "国名を隠す", "show": "国名を表示", "restart": "最初から", "listhead": "国名をドラッグして正しい場所に置いてください", "howto_h": "あそびかた", "howto_p": "リストの国名をドラッグして、地図の正しい場所にドロップしよう！", "correct": "正解！", "wrong": "ちがう場所だよ", "complete": "クリア！", "perfect": "パーフェクト！", "ribbon": "ノーミス達成", "c_countries": "州数", "c_mistakes": "ミス", "c_time": "タイム", "msg_normal": "おみごと！ {n}州すべて配置、ミスは{m}回でした。<br>ノーミスを目指してもう一度挑戦！", "msg_perfect": "完璧！ {n}州すべてをミスなしで配置しました。<br>あなたは{map}マスターです！ 🌍✨", "playagain": "もう一度", "credit": "50州 · 国名ドラッグ＆ドロップ地理クイズ", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">日本語版</a><span class=\"sep\">›</span><span>アメリカ</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ 地域選択へ</a> <a href=\"howto.html\">👆 遊びかた</a> <a href=\"../en/usa.html\">🇬🇧 English</a>", "mapname": "アメリカ"};
-const VERSION = "v1.5";
+const VERSION = "v1.6";
 
 const map=document.getElementById('map');
 const landG=document.getElementById('land');

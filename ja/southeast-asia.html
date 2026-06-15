@@ -52,8 +52,8 @@
   .lbl{font:700 12px "Segoe UI",sans-serif;fill:#0e3a78;text-anchor:middle;
     paint-order:stroke;stroke:#fff;stroke-width:2px;pointer-events:none;}
   /* tiny microstate countries: real shape + outline ring for visibility */
-  .country.tiny{stroke:#3a3a3a;stroke-width:1.2}
-  .country.tiny.ok{stroke:#3aa76d}
+  .country.tiny{stroke:var(--line);stroke-width:.6}
+  .country.tiny.ok{stroke:var(--line-ok);stroke-width:.8}
   .tiny-ring{display:none}
   .tiny-ring.hide{opacity:0}
   .tiny-hit{fill:transparent;stroke:none;cursor:pointer;}
@@ -607,7 +607,7 @@ const NAMES = ["Brunei", "Cambodia", "Indonesia", "Laos", "Malaysia", "Myanmar",
 const TINY = {"Timor-Leste": {"cx": 578.5, "cy": 482.4}, "Brunei": {"cx": 472.7, "cy": 319.3}, "Singapore": {"cx": 471, "cy": 354}};
 const LABELS = {"Myanmar": "ミャンマー", "Thailand": "タイ", "Laos": "ラオス", "Cambodia": "カンボジア", "Vietnam": "ベトナム", "Malaysia": "マレーシア", "Philippines": "フィリピン", "Indonesia": "インドネシア", "Timor-Leste": "東ティモール", "Brunei": "ブルネイ", "Singapore": "シンガポール"};
 const UI = {"title": "東南アジア", "map_aria": "東南アジアの地図", "placed": "配置済み", "mistakes": "ミス", "hide": "国名を隠す", "show": "国名を表示", "restart": "最初から", "listhead": "国名をドラッグして正しい場所に置いてください", "howto_h": "あそびかた", "howto_p": "リストの国名をドラッグして、地図の正しい場所にドロップしよう！", "correct": "正解！", "wrong": "ちがう場所だよ", "complete": "クリア！", "perfect": "パーフェクト！", "ribbon": "ノーミス達成", "c_countries": "数", "c_mistakes": "ミス", "c_time": "タイム", "msg_normal": "おみごと！ {n}すべて配置、ミスは{m}回でした。<br>ノーミスを目指してもう一度挑戦！", "msg_perfect": "完璧！ {n}すべてをミスなしで配置しました。<br>あなたは{map}マスターです！ 🌍✨", "playagain": "もう一度", "credit": "11か国 · 国名ドラッグ＆ドロップ地理クイズ", "crumb": "<a href=\"../index.html\">🏠 TOP</a><span class=\"sep\">›</span><a href=\"index.html\">日本語版</a><span class=\"sep\">›</span><span>東南アジア</span>", "backlinks": "<a class=\"primary\" href=\"index.html\">↩ 地域選択へ</a> <a href=\"howto.html\">👆 遊びかた</a> <a href=\"../en/southeast-asia.html\">🇬🇧 English</a>", "mapname": "東南アジア"};
-const VERSION = "v1.2";
+const VERSION = "v1.3";
 
 const map=document.getElementById('map');
 const landG=document.getElementById('land');
